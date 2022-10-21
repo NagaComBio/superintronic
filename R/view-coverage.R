@@ -9,7 +9,7 @@
 #' @importFrom ggplot2 ggplot aes facet_wrap labs theme geom_segment geom_rect element_blank geom_hline
 #' @importFrom patchwork wrap_plots
 #' @export
-view_coverage <- function(data, score, colour = NULL, facets = rng_vars()) {
+view_coverage <- function(data, score, colour = NULL, facets = rng_vars(), scale_y = 'fixed') {
   
   score <- rlang::enquo(score) 
   colour <- rlang::enquo(colour) 
@@ -47,7 +47,7 @@ view_coverage <- function(data, score, colour = NULL, facets = rng_vars()) {
   }
     
   if (length(facets) > 0L) {
-    cvg_hist <- cvg_hist + facet_wrap(facets, ncol = 1L)
+    cvg_hist <- cvg_hist + facet_wrap(facets, ncol = 1L, scale = scale_y)
   }
   
   # cosmetic fixes 
