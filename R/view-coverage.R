@@ -37,13 +37,13 @@ view_coverage <- function(data, score, colour = NULL, facets = rng_vars(), scale
   plot_tbl <- as.data.frame(coverage_view)
   
   cvg_hist <- ggplot(plot_tbl, 
-                     aes(x = start, xend = end, y = 0, yend = score)) +
+                     aes(xmin = start, xmax = end, ymin = 0, ymax = score)) +
     rescale_by_width(data)
   
   if (!no_col)  {
-    cvg_hist <- cvg_hist + geom_segment(aes(colour = feature))
+    cvg_hist <- cvg_hist + geom_rect(aes(colour = feature))
   } else {
-    cvg_hist <- cvg_hist + geom_segment()
+    cvg_hist <- cvg_hist + geom_rect()
   }
     
   if (length(facets) > 0L) {
