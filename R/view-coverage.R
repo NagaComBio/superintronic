@@ -41,7 +41,7 @@ view_coverage <- function(data, score, colour = NULL, facets = rng_vars(), scale
     rescale_by_width(data)
   
   if (!no_col)  {
-    cvg_hist <- cvg_hist + geom_rect(aes(colour = feature))
+    cvg_hist <- cvg_hist + geom_rect(aes(colour = feature, fill=feature))
   } else {
     cvg_hist <- cvg_hist + geom_rect()
   }
